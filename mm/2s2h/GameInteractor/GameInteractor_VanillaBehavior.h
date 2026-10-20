@@ -758,6 +758,15 @@ typedef enum {
 
     // #### `result`
     // ```c
+    // (this->transformation == PLAYER_FORM_FIERCE_DEITY) && Player_IsZTargeting(this)
+    // ```
+    // #### `args`
+    // - `*Player`
+    // - `s32` (is Z-targeting)
+    VB_FIRE_SWORD_BEAM,
+
+    // #### `result`
+    // ```c
     // true
     // ```
     // #### `args`

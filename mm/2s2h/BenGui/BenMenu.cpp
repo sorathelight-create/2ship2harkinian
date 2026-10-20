@@ -143,6 +143,12 @@ static const std::vector<const char*> timeStopOptions = {
     "Temples + Mini Dungeons", // TIME_STOP_TEMPLES_DUNGEONS
 };
 
+static const std::vector<const char*> hitAnywhereOptions = {
+    "Off",                    // HIT_ANYWHERE_OFF
+    "Z-Targeted Enemy",       // HIT_ANYWHERE_TARGETED
+    "All Enemies on the Map", // HIT_ANYWHERE_ALL_ENEMIES
+};
+
 static const std::vector<const char*> speedModifierModeOptions = {
     "Off",
     "On",
@@ -1049,6 +1055,21 @@ void BenMenu::AddEnhancements() {
     AddWidget(path, "Climb Anywhere", WIDGET_CVAR_CHECKBOX)
         .CVar("gCheats.ClimbAnywhere")
         .Options(CheckboxOptions().Tooltip("Allows climbing on most walls regardless of vines."));
+    AddWidget(path, "Sword Beams (Human Link)", WIDGET_CVAR_CHECKBOX)
+        .CVar("gCheats.HumanSwordBeams")
+        .Options(CheckboxOptions().Tooltip(
+            "Allows human Link to fire sword beams like Fierce Deity Link. Swing your sword while Z-targeting to fire "
+            "a beam. Each beam costs magic, just like Fierce Deity's."));
+    AddWidget(path, "Hit Anywhere", WIDGET_CVAR_COMBOBOX)
+        .CVar("gCheats.HitAnywhere")
+        .Options(ComboboxOptions()
+                     .Tooltip("Your sword and melee attacks hit enemies no matter how far away they are.\n\n"
+                              "- Off: Vanilla behaviour.\n"
+                              "- Z-Targeted Enemy: Every swing also hits the enemy you are Z-targeting, from any "
+                              "distance.\n"
+                              "- All Enemies on the Map: Every swing hits every enemy currently loaded in the area, "
+                              "from anywhere on the map.")
+                     .ComboVec(&hitAnywhereOptions));
     AddWidget(path, "Stop Time in Dungeons", WIDGET_CVAR_COMBOBOX)
         .CVar("gCheats.TempleTimeStop")
         .Options(
